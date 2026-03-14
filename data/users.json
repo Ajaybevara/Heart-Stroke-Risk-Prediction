@@ -1,0 +1,62 @@
+{
+    "rajasekhar6105_gmail_com": {
+        "username": "rajasekhar6105_gmail_com",
+        "email": "rajasekhar6105@gmail.com",
+        "name": "Rajasekhar Bevara",
+        "role": "admin",
+        "firebase_uid": "x3To7KXUi3aR5uYB6l3eGmLctFM2",
+        "created_at": "2026-02-18T09:17:20.658874",
+        "auth_provider": "email",
+        "photo_url": ""
+    },
+    "durgaprasad41930_gmail_com": {
+        "username": "durgaprasad41930_gmail_com",
+        "email": "durgaprasad41930@gmail.com",
+        "name": "Durga",
+        "role": "user",
+        "firebase_uid": "lYS8T9KpGKhEmMc8H1GIkG7aYH82",
+        "created_at": "2026-02-19T11:53:58.365893",
+        "auth_provider": "email",
+        "photo_url": ""
+    },
+    "tejaswararaobodduru9999_gmail_com": {
+        "username": "tejaswararaobodduru9999_gmail_com",
+        "email": "tejaswararaobodduru9999@gmail.com",
+        "name": "Tejas",
+        "role": "admin",
+        "firebase_uid": "fhzjFjrH6KXc8bBjdeZ3wzD69nt1",
+        "created_at": "2026-02-19T12:41:01.184599",
+        "auth_provider": "email",
+        "photo_url": ""
+    },
+    "_deleted_uids": [
+        "Ni1uvqKjoYhmnrLU2W5krDBFIeD2",
+        "brwWOnj6HuSppGwQRZyNJyQc6Qx2",
+        "kdUKbtdFPdO9Q2duO60ODFcI8u22",
+        "nujgwTCh7fh0h2wxgOLFb7AbwDs2"
+    ],
+    "_deleted_emails": [
+        "indigibilli.h2022btcseds@srisriuniversity.edu.in",
+        "jeswanthmajji26@gmail.com"
+    ],
+    "ajaybevara1_gmail_com": {
+        "username": "ajaybevara1_gmail_com",
+        "email": "ajaybevara1@gmail.com",
+        "name": "ajay",
+        "role": "user",
+        "firebase_uid": "VG26qZYjt4PF0RohPXZrZtruhet2",
+        "created_at": "2026-03-07T09:28:49.061909",
+        "auth_provider": "email",
+        "photo_url": ""
+    },
+    "chsantoshkumar983_gmail_com": {
+        "username": "chsantoshkumar983_gmail_com",
+        "email": "chsantoshkumar983@gmail.com",
+        "name": "santhosh",
+        "role": "user",
+        "firebase_uid": "VdgeN9MnIdaA4P5DNSeEahv7GDK2",
+        "created_at": "2026-03-07T09:54:54.358527",
+        "auth_provider": "email",
+        "photo_url": ""
+    }
+}
