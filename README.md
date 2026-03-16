@@ -167,3 +167,39 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For deployment issues, see `PRODUCTION_DEPLOYMENT.md`
 For Firebase setup, see `FIREBASE_AUTH_README.md`
+## Troubleshooting
+
+### Model Loading Issues
+
+If you encounter model loading errors in production:
+
+1. **Run the diagnostic script:**
+   ```bash
+   python diagnose_models.py
+   ```
+
+2. **Check that model files are committed:**
+   ```bash
+   git ls-files saved_models/
+   ```
+
+3. **Verify .gitignore configuration:**
+   - `saved_models/` should be included (not excluded)
+   - Check that `!saved_models/` and `saved_models/**` are in .gitignore
+
+4. **Common solutions:**
+   - Ensure `saved_models/` folder is pushed to your Git repository
+   - Check file permissions in deployment
+   - Verify Render build logs for any file copy issues
+
+### Firebase Issues
+
+- Ensure all Firebase environment variables are set
+- Check Firebase project configuration
+- Verify API keys match your Firebase project
+
+### Email Issues
+
+- Use Gmail app password (not regular password)
+- Enable "Less secure app access" or use app passwords
+- Check SMTP settings in environment variables

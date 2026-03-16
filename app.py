@@ -131,9 +131,6 @@ def remove_emojis(text):
     return text.strip()
 
 # Load models at startup (for development)
-# Use absolute path relative to app location for production compatibility
-MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved_models')
-
 # Global model variables (lazy loaded for production)
 model_A = None
 model_B = None
@@ -145,10 +142,40 @@ def load_models():
 
     if model_A is None or model_B is None or feature_info is None:
         try:
-            print("🔄 Loading models...")
-            model_A = joblib.load(os.path.join(MODEL_PATH, 'stroke_model_A_original.pkl'))
-            model_B = joblib.load(os.path.join(MODEL_PATH, 'stroke_model_B_synthetic.pkl'))
-            feature_info = joblib.load(os.path.join(MODEL_PATH, 'feature_info.pkl'))
+            # Try multiple path resolutions for different deployment environments
+            possible_paths = [
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved_models'),  # Development/Render
+                os.path.join(os.getcwd(), 'saved_models'),  # Current working directory
+                'saved_models',  # Relative path
+                '/app/saved_models',  # Render specific path
+            ]
+
+            model_path = None
+            for path in possible_paths:
+                print(f"🔍 Checking path: {path}")
+                if os.path.exists(path):
+                    print(f"  ✅ Directory exists: {path}")
+                    model_file = os.path.join(path, 'stroke_model_A_original.pkl')
+                    if os.path.exists(model_file):
+                        print(f"  ✅ Model file found: {model_file}")
+                        model_path = path
+                        break
+                    else:
+                        print(f"  ❌ Model file missing: {model_file}")
+                else:
+                    print(f"  ❌ Directory not found: {path}")
+
+            if model_path is None:
+                # List all files in current directory for debugging
+                print(f"📂 Current directory contents: {os.listdir('.')}")
+                if os.path.exists('saved_models'):
+                    print(f"📂 saved_models contents: {os.listdir('saved_models')}")
+                raise FileNotFoundError(f"Could not find saved_models directory or model files. Tried paths: {possible_paths}")
+
+            print(f"🔄 Loading models from: {model_path}")
+            model_A = joblib.load(os.path.join(model_path, 'stroke_model_A_original.pkl'))
+            model_B = joblib.load(os.path.join(model_path, 'stroke_model_B_synthetic.pkl'))
+            feature_info = joblib.load(os.path.join(model_path, 'feature_info.pkl'))
             print("✅ Models loaded successfully!")
         except Exception as e:
             print(f"❌ Error loading models: {e}")
