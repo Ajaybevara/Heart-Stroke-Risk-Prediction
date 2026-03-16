@@ -142,19 +142,42 @@ def load_models():
 
     if model_A is None or model_B is None or feature_info is None:
         try:
+            # Debug: Print current environment info
+            print(f"🔍 Current working directory: {os.getcwd()}")
+            print(f"🔍 Script location: {os.path.dirname(os.path.abspath(__file__))}")
+            print(f"🔍 Current directory contents: {os.listdir('.')}")
+
             # Try multiple path resolutions for different deployment environments
             possible_paths = [
-                os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved_models'),  # Development/Render
-                os.path.join(os.getcwd(), 'saved_models'),  # Current working directory
-                'saved_models',  # Relative path
-                '/app/saved_models',  # Render specific path
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models'),  # New root-level models directory
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved_models'),  # Relative to script
+                os.path.join(os.getcwd(), 'models'),  # New root-level models directory (cwd)
+                os.path.join(os.getcwd(), 'saved_models'),  # Relative to working directory
+                'models',  # Simple relative path to new directory
+                'saved_models',  # Simple relative path
+                '/app/models',  # Render absolute path (new)
+                '/app/saved_models',  # Render absolute path
+                './models',  # Explicit relative path to new directory
+                './saved_models',  # Explicit relative path
             ]
+
+            # Remove duplicates
+            possible_paths = list(set(possible_paths))
+
+            print(f"🔍 Checking {len(possible_paths)} possible paths: {possible_paths}")
 
             model_path = None
             for path in possible_paths:
                 print(f"🔍 Checking path: {path}")
                 if os.path.exists(path):
                     print(f"  ✅ Directory exists: {path}")
+                    try:
+                        contents = os.listdir(path)
+                        print(f"  📂 Contents: {contents}")
+                    except Exception as e:
+                        print(f"  ❌ Error listing directory: {e}")
+                        continue
+
                     model_file = os.path.join(path, 'stroke_model_A_original.pkl')
                     if os.path.exists(model_file):
                         print(f"  ✅ Model file found: {model_file}")
@@ -166,10 +189,15 @@ def load_models():
                     print(f"  ❌ Directory not found: {path}")
 
             if model_path is None:
-                # List all files in current directory for debugging
-                print(f"📂 Current directory contents: {os.listdir('.')}")
-                if os.path.exists('saved_models'):
-                    print(f"📂 saved_models contents: {os.listdir('saved_models')}")
+                # Additional debugging
+                print("📋 Additional debugging:")
+                print(f"  Python path: {os.__file__}")
+                print(f"  Environment PATH: {os.environ.get('PATH', 'Not set')[:100]}...")
+
+                # Check if we're in a container
+                if os.path.exists('/.dockerenv') or os.environ.get('RENDER'):
+                    print("  🌐 Detected container environment (Render/Docker)")
+
                 raise FileNotFoundError(f"Could not find saved_models directory or model files. Tried paths: {possible_paths}")
 
             print(f"🔄 Loading models from: {model_path}")
@@ -179,6 +207,8 @@ def load_models():
             print("✅ Models loaded successfully!")
         except Exception as e:
             print(f"❌ Error loading models: {e}")
+            import traceback
+            traceback.print_exc()
             model_A = None
             model_B = None
             feature_info = None
