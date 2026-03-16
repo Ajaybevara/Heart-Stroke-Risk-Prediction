@@ -2328,6 +2328,16 @@ print("\n⏰ Medication reminder scheduler started!")
 print("   Checking for overdue medications every minute...")
 
 
+@app.route('/health')
+def health_check():
+    """Health check endpoint for load balancers and monitoring"""
+    return jsonify({
+        'status': 'healthy',
+        'timestamp': datetime.now().isoformat(),
+        'version': '1.0.0'
+    })
+
+
 if __name__ == '__main__':
     print("\n" + "="*60)
     print("🏥 Stroke Prediction Dashboard")
