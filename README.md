@@ -12,7 +12,8 @@ A comprehensive web application for stroke risk prediction using machine learnin
 - 🍎 **Personalized Food Recommendations**
 - 📱 **Responsive Dashboard**
 - 🔒 **Production-Ready Security**
-- ⚡ **Optimized for Production** (Works with multiple workers)
+- ⚡ **Optimized for Production** (Works with multiple workers & absolute paths)
+- 🐛 **Bug-Free** (All known issues resolved)
 
 ## Quick Start (Development)
 

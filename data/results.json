@@ -2566,6 +2566,114 @@
                 "\ud83d\udca1 Cooking tips: Use minimal oil, prefer steaming/boiling, add turmeric & ginger",
                 "\ud83e\udd64 Beverages: Buttermilk (low salt), herbal tea, jeera water, avoid sugary drinks"
             ]
+        },
+        {
+            "timestamp": "2026-03-16T10:12:50.496534",
+            "input_data": {
+                "age": "50",
+                "gender": "Female",
+                "ever_married": "Yes",
+                "residence_type": "Urban",
+                "hypertension": "0",
+                "heart_disease": "0",
+                "avg_glucose_level": "100",
+                "bmi": "25",
+                "work_type": "Private",
+                "smoking_status": "never smoked"
+            },
+            "results": {
+                "model_A": {
+                    "probability": 0.4,
+                    "risk_level": "LOW"
+                },
+                "model_B": {
+                    "probability": 6.5,
+                    "risk_level": "LOW"
+                },
+                "ensemble": {
+                    "probability": 3.4,
+                    "risk_level": "LOW"
+                }
+            },
+            "food_recommendations": {
+                "foods_to_eat": [
+                    "\ud83e\udd57 Fresh vegetables",
+                    "\ud83c\udf4e Fresh fruits",
+                    "\ud83d\udca7 Plenty of water (8 glasses/day)",
+                    "\ud83c\udf3e Whole grains"
+                ],
+                "foods_to_avoid": [],
+                "general_advice": [],
+                "urgent_message": null
+            },
+            "doctor_recommendations": {
+                "risk_category": "Medium Risk",
+                "risk_level": "MEDIUM",
+                "consult_doctor": true,
+                "consult_message": "\u26a0\ufe0f Medium risk detected. It is recommended to consult a doctor within the next 2 weeks for a thorough evaluation.",
+                "doctor_types": [
+                    {
+                        "type": "General Physician / Internal Medicine",
+                        "reason": "Initial assessment, blood tests, BP & glucose management plan",
+                        "urgency": "Within 2 weeks"
+                    }
+                ],
+                "medical_advice": [
+                    "\u26a0\ufe0f Your glucose and/or blood pressure levels indicate medium risk",
+                    "Schedule a consultation with your doctor within 2 weeks",
+                    "Regular monitoring of glucose and blood pressure is essential",
+                    "Consider lifestyle modifications to prevent progression",
+                    "Monthly medical check-ups recommended"
+                ],
+                "indian_foods_to_eat": [
+                    "\ud83e\udd6c Methi (fenugreek) sabzi - Helps control blood sugar",
+                    "\ud83e\uded8 Masoor dal, moong dal, chana dal",
+                    "\ud83e\udd52 Karela (bitter gourd) juice or sabzi",
+                    "\ud83c\udf3e Oats upma or dalia (broken wheat)",
+                    "\ud83e\udd57 Cabbage and carrot sabzi",
+                    "\ud83c\udf45 Tomato soup (low salt)",
+                    "\ud83e\udeda Ginger and garlic in cooking",
+                    "\ud83e\udd5c Small portions of almonds and walnuts",
+                    "\ud83c\udf75 Green tea or tulsi tea",
+                    "\ud83e\udd65 Buttermilk (chaas) without salt",
+                    "\ud83e\udd55 Beetroot and carrot salad",
+                    "\ud83e\uded1 Capsicum (bell pepper) sabzi"
+                ],
+                "indian_foods_to_avoid": [
+                    "\ud83c\udf5a White rice and refined flour (maida) products",
+                    "\ud83e\udd54 Potato-based dishes (aloo paratha, aloo sabzi)",
+                    "\ud83c\udf70 All sweets and desserts (mithai, halwa, kheer)",
+                    "\ud83c\udf5f Fried foods (samosa, kachori, poori, bhatura)",
+                    "\ud83e\uddc2 High-salt foods (pickles, papad, namkeen)",
+                    "\ud83e\udd53 Processed meats and sausages",
+                    "\ud83e\uddc8 Ghee and butter in excess",
+                    "\ud83e\udd64 Sugary beverages and packaged juices",
+                    "\ud83c\udf5e White bread and biscuits",
+                    "\ud83e\uddc0 Full-fat paneer and cheese"
+                ],
+                "lifestyle_changes": [
+                    "Walking for 45 minutes daily (morning or evening)",
+                    "Practice pranayama and meditation for stress reduction",
+                    "Monitor blood sugar levels twice a week",
+                    "Reduce salt intake to less than 5g per day",
+                    "Avoid skipping meals - eat small frequent meals",
+                    "Limit screen time and ensure adequate rest",
+                    "Consider joining a diabetes/hypertension management program"
+                ]
+            },
+            "indian_food_recommendations": [
+                "\u26a0\ufe0f Moderate glucose - Prefer: Sugar-free dal preparations, methi leaves, bitter gourd sabzi",
+                "\u274c Reduce: White rice, sweet dishes, refined flour items",
+                "\u2696\ufe0f Light meals: Khichdi, dal-rice, vegetable soups",
+                "\ud83e\udd57 Moong dal (yellow lentils) - high in protein, low in fat",
+                "\ud83c\udf5a Brown rice or hand-pounded rice instead of white rice",
+                "\ud83e\udd6c Palak (spinach) sabzi with minimal oil",
+                "\ud83e\udd52 Cucumber raita with low-fat yogurt",
+                "\ud83e\uded8 Chana dal or masoor dal preparations",
+                "\ud83c\udf3e Ragi (finger millet) porridge or roti",
+                "\ud83d\udca1 Cooking tips: Use minimal oil, prefer steaming/boiling, add turmeric & ginger",
+                "\ud83e\udd64 Beverages: Buttermilk (low salt), herbal tea, jeera water, avoid sugary drinks"
+            ]
         }
     ],
     "ajaybevara1_gmail_com": [

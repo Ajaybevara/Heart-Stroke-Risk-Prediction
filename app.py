@@ -131,7 +131,8 @@ def remove_emojis(text):
     return text.strip()
 
 # Load models at startup (for development)
-MODEL_PATH = 'saved_models'
+# Use absolute path relative to app location for production compatibility
+MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved_models')
 
 # Global model variables (lazy loaded for production)
 model_A = None
@@ -1565,6 +1566,9 @@ def get_medication_alerts():
 def predict():
     """Handle prediction requests"""
     try:
+        # Get input data from request
+        data = request.get_json()
+        
         # Load models if not already loaded (works in production with multiple workers)
         try:
             model_A, model_B, feature_info = load_models()

@@ -10,7 +10,9 @@ import numpy as np
 
 def test_model_loading():
     """Test if models can be loaded successfully"""
-    MODEL_PATH = 'saved_models'
+    # Use same path resolution as app.py
+    import os
+    MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved_models')
 
     print("🔍 Testing model loading...")
 
