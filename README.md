@@ -5,13 +5,14 @@ A comprehensive web application for stroke risk prediction using machine learnin
 ## Features
 
 - 🔐 **Firebase Authentication** (Email/Password + Google Sign-In)
-- 🧠 **ML Stroke Risk Prediction** (Ensemble of 3 models)
+- 🧠 **ML Stroke Risk Prediction** (Ensemble of 3 models with lazy loading)
 - 💊 **Medication Reminders** with email notifications
 - 📊 **Health History Tracking**
 - 👨‍⚕️ **Doctor Recommendations** based on risk factors
 - 🍎 **Personalized Food Recommendations**
 - 📱 **Responsive Dashboard**
 - 🔒 **Production-Ready Security**
+- ⚡ **Optimized for Production** (Works with multiple workers)
 
 ## Quick Start (Development)
 

@@ -130,19 +130,40 @@ def remove_emojis(text):
     text = ' '.join(text.split())
     return text.strip()
 
-# Load models at startup
+# Load models at startup (for development)
 MODEL_PATH = 'saved_models'
 
+# Global model variables (lazy loaded for production)
+model_A = None
+model_B = None
+feature_info = None
+
+def load_models():
+    """Load models if not already loaded (thread-safe for production)"""
+    global model_A, model_B, feature_info
+
+    if model_A is None or model_B is None or feature_info is None:
+        try:
+            print("🔄 Loading models...")
+            model_A = joblib.load(os.path.join(MODEL_PATH, 'stroke_model_A_original.pkl'))
+            model_B = joblib.load(os.path.join(MODEL_PATH, 'stroke_model_B_synthetic.pkl'))
+            feature_info = joblib.load(os.path.join(MODEL_PATH, 'feature_info.pkl'))
+            print("✅ Models loaded successfully!")
+        except Exception as e:
+            print(f"❌ Error loading models: {e}")
+            model_A = None
+            model_B = None
+            feature_info = None
+            raise e
+
+    return model_A, model_B, feature_info
+
+# Try to load models at startup (will work in development)
 try:
-    model_A = joblib.load(os.path.join(MODEL_PATH, 'stroke_model_A_original.pkl'))
-    model_B = joblib.load(os.path.join(MODEL_PATH, 'stroke_model_B_synthetic.pkl'))
-    feature_info = joblib.load(os.path.join(MODEL_PATH, 'feature_info.pkl'))
-    print("✅ Models loaded successfully!")
+    load_models()
 except Exception as e:
-    print(f"❌ Error loading models: {e}")
-    model_A = None
-    model_B = None
-    feature_info = None
+    print(f"⚠️  Could not load models at startup: {e}")
+    print("   Models will be loaded on first prediction request")
 
 # Helper functions for JSON operations
 def load_users():
@@ -1544,14 +1565,15 @@ def get_medication_alerts():
 def predict():
     """Handle prediction requests"""
     try:
-        data = request.get_json()
-        
-        if not model_A or not model_B:
+        # Load models if not already loaded (works in production with multiple workers)
+        try:
+            model_A, model_B, feature_info = load_models()
+        except Exception as e:
             return jsonify({
                 'success': False,
-                'error': 'Models not loaded. Please ensure model files exist in saved_models folder.'
+                'error': f'Model loading failed: {str(e)}. Please ensure model files exist in saved_models folder.'
             })
-        
+
         # Prepare features
         features = prepare_features(data)
         
