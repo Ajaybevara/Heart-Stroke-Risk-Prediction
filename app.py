@@ -2274,7 +2274,7 @@ def generate_report_pdf(input_data, results, food_recommendations=None, doctor_r
     
     pdf.ln(2)
     pdf.set_font('Times', 'I', 9)
-    pdf.cell(0, 5, 'StrokeGuard AI (c) 2024 - Advanced Medical Analytics', ln=True, align='C')
+    pdf.cell(0, 5, 'StrokeGuard AI (c) 2026 - Advanced Medical Analytics', ln=True, align='C')
 
     return pdf
 
